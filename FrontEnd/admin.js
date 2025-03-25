@@ -7,7 +7,7 @@ const removeToken = () => {
   sessionStorage.removeItem("deletedImages");
 };
 
-window.addEventListener("unload", removeToken); // reload suppression token
+
 
 const adminEdition = () => {
   adminHTML();
@@ -79,11 +79,25 @@ const openModal = () => {
     iconDelete.className = "fa-solid fa-trash-can iconModal";
     iconDelete.id = "deleteIcon";
 
-    iconDelete.onclick = () => {
-      figure.remove();//retire figure du dom
-      deletedImages[card.id] = true;//id supprime dans deletedimages
-      sessionStorage.setItem("deletedImages", JSON.stringify(deletedImages));//met a jour session storage
+    iconDelete.onclick = async () => {
+      try {
+        const response = await fetch(`${api}works/${card.id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+    
+        if (!response.ok) throw new Error("Échec suppression");
+    
+        figure.remove(); // 
+        cards = cards.filter(c => c.id !== card.id); // mise à jour locale
+        workDisplay(); // mise à jour galerie principale
+      } catch (err) {
+        console.error("Erreur suppression:", err);
+      }
     };
+    
 
     figure.appendChild(iconDelete);
     gallery.appendChild(figure);
