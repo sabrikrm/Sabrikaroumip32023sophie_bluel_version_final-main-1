@@ -14,7 +14,6 @@ const adminEdition = () => {
   document.getElementById("titleProjectRemove").onclick = async e => {
     e.preventDefault();
     await fetchApiWorks(); // cards
-    modalHTML();
     displayModal();
     openModal();
     editModal();
