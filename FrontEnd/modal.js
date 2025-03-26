@@ -99,7 +99,7 @@ const addPicture = () => {
 
 const displayModal = () => {
   const modal = document.querySelector("#modal");
-  modal.style.display = "block";
+  modal.style.display = ""; 
   document.getElementById("closeModal").onclick = closeModal;
   window.onclick = e => { if (e.target === modal) closeModal(); };
   document.body.classList.add("modalOpen");

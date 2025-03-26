@@ -74,7 +74,7 @@ const openModal = () => {
       <img src="${card.imageUrl}" alt="${card.title}">
      
     `;
-
+    //supp img
     const iconDelete = document.createElement("i");
     iconDelete.className = "fa-solid fa-trash-can iconModal";
     iconDelete.id = "deleteIcon";

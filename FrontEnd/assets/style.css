@@ -594,13 +594,14 @@ hr {
   text-align: center;
   padding: 10px 45px;
 }
-#deleteAllWorks {
-  color: red;
-  margin-bottom: 40px;
-}
+
 
 #deleteAllWorks:hover {
   cursor: pointer;
+}
+
+.modal.show {
+  display: flex; /* override le none */
 }
 
 /* ************************ Partie edition *************************** */
